@@ -57,7 +57,7 @@ const Contact = () => {
                 <div>
                   <h4>Email</h4>
                   <p>
-                    <a href="mailto:zaid@example.com">zaid@example.com</a>
+                    <a href="mailto:zaid@example.com">zaidgebremeskel502@gmail.com</a>
                   </p>
                 </div>
               </div>
@@ -66,7 +66,7 @@ const Contact = () => {
                 <FaMapMarkerAlt className="contact-icon" />
                 <div>
                   <h4>Location</h4>
-                  <p>City, Country</p>
+                  <p>Tigray, Ethiopia</p>
                 </div>
               </div>
 
