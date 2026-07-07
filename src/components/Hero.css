@@ -1,4 +1,4 @@
-.hero {
+/* .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -100,6 +100,236 @@
 
 .code-line {
   color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.code-line:last-child {
+  margin-bottom: 0;
+}
+
+.code-keyword {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.code-var {
+  color: #94a3b8;
+}
+
+.code-string {
+  color: #86efac;
+} */
+
+/* Animations */
+/* .hero-text.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-visual.slide-in-right {
+  animation: slideInFromRight 0.8s ease-out;
+} */
+
+/* Responsive */
+/* @media (max-width: 1024px) {
+  .hero-content {
+    gap: 2rem;
+  }
+
+  .hero-visual {
+    height: 400px;
+  }
+
+  .hero-code {
+    font-size: 0.75rem;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 2rem;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-visual {
+    height: 300px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero::before {
+    width: 400px;
+    height: 400px;
+    top: -30%;
+    right: -20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-visual {
+    height: 250px;
+  }
+
+  .hero-code {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+  }
+} */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text {
+  animation-delay: 0.1s;
+}
+
+/* FIX: gradient now starts from var(--text-primary) instead of a
+   hardcoded near-white (#f8fafc). --text-primary is already dark
+   in light mode and light in dark mode, so the title stays readable
+   in both themes automatically. */
+.hero-title {
+  font-size: clamp(3rem, 8vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  transition: background 0.3s ease;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-visual {
+  position: relative;
+  height: 500px;
+  animation-delay: 0.2s;
+}
+
+.hero-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  background-color: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* FIX: the code snippet is a "terminal" visual that's meant to always
+   look dark, like a code editor, in both themes. Its background was
+   already hardcoded dark — but the text inside was using
+   var(--text-secondary), which turns dark in light mode and vanishes
+   against this dark box. Giving it its own fixed, theme-independent
+   colors keeps it legible no matter what theme the rest of the page is in. */
+.hero-code {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.875rem;
+  max-width: 280px;
+  backdrop-filter: blur(10px);
+}
+
+.code-line {
+  color: #94a3b8; /* fixed light gray — always readable on the dark code box */
   margin-bottom: 0.5rem;
   line-height: 1.6;
 }
