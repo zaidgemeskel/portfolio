@@ -84,7 +84,7 @@ const Hero = () => {
         <div className="hero-content">
           <div className={`hero-text ${isInView ? "fade-in-up" : ""}`}>
             <h1 className="hero-title">Zaid Gebremeskel</h1>
-            <p className="hero-subtitle">Full-Stack Web Developer</p>
+            <p className="hero-subtitle">AI Full-Stack Web Developer</p>
             <p className="hero-description">
               I build modern, responsive, and scalable web applications using
               React, Node.js, Express, and MySQL. I enjoy solving real-world
