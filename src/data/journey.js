@@ -24,7 +24,7 @@ export const journeySteps = [
     id: 4,
     title: "ChatGPT Clone",
     description:
-      "I developed a ChatGPT-inspired application with user authentication and conversational functionality.",
+      "I developed a ChatGPT-inspired application with conversational functionality.",
     icon: "FaBrain",
   },
   {
