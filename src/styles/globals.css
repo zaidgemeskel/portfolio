@@ -86,11 +86,9 @@ body.dark-theme {
 
 html {
   scroll-behavior: smooth;
-}
-html,
-body {
-  max-width: 100%;
   overflow-x: hidden;
+  overflow-y: visible;
+  height: 100%;
 }
 
 body {
@@ -98,19 +96,20 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
+  min-height: 100%;
   overflow-x: hidden;
+  overflow-y: clip;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--accent);
 }
 
 ::-webkit-scrollbar-thumb {

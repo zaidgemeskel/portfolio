@@ -41,6 +41,15 @@ export const projects = [
     title: "ChatGPT Clone",
     description:
       "A full-stack AI-inspired chat application featuring user authentication, conversation management, responsive design, and a clean modern interface. The project demonstrates frontend-backend integration using React, Node.js, Express.js, and MySQL.",
+    keyFeatures: [
+      "Intelligent Conversation Interface",
+      "CRUD Operations",
+      "Responsive Design",
+      "RESTful API",
+      "MySQL Database",
+      "Clean and Modern User Interface",
+    ],
+
     technologies: [
       "React",
       "Vite",
@@ -59,6 +68,13 @@ export const projects = [
     title: "Netflix Clone",
     description:
       "A responsive Netflix-inspired landing page built using React. The project focuses on modern UI design, reusable components, and responsive layouts while providing an engaging user experience.",
+ keyFeatures: [
+     "Reusable components",
+      "Responsive Design",
+      "Providing an engaging user experience",
+      "Clean and Modern User Interface",
+    ],
+
     technologies: ["React", "JavaScript", "CSS"],
     image: netflixImg,
     liveDemo: "https://movietb.netlify.app/",
