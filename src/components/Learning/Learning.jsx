@@ -1,5 +1,5 @@
-import { useInView } from "../hooks/useInView";
-import { learningTopics } from "../data/learning";
+import { useInView } from "../../hooks/useInView";
+import { learningTopics } from "../../data/learning";
 import {
   FaRocket,
   FaLock,
@@ -8,7 +8,7 @@ import {
   FaBrain,
   FaChartLine,
 } from "react-icons/fa";
-import "./Learning.css";
+import styles from "./Learning.module.css";
 
 const iconMap = {
   FaRocket: FaRocket,
@@ -23,25 +23,27 @@ const Learning = () => {
   const [ref, isInView] = useInView(0.2);
 
   return (
-    <section id="learning" className="learning" ref={ref}>
+    <section id="learning" className={styles.learning} ref={ref}>
       <div className="container">
         <div className="section-title">
           <h2>Currently Learning</h2>
           <p>Expanding my knowledge and exploring new frontiers</p>
         </div>
 
-        <div className={`learning-grid ${isInView ? "fade-in-up" : ""}`}>
+        <div
+          className={`${styles["learning-grid"]} ${isInView ? "fade-in-up" : ""}`}
+        >
           {learningTopics.map((topic, index) => {
             const IconComponent = iconMap[topic.icon];
             return (
               <div
                 key={topic.id}
-                className="learning-card"
+                className={styles["learning-card"]}
                 style={{
                   animationDelay: `${(index % 3) * 0.1}s`,
                 }}
               >
-                <div className="learning-icon">
+                <div className={styles["learning-icon"]}>
                   {IconComponent && <IconComponent />}
                 </div>
                 <h3>{topic.title}</h3>

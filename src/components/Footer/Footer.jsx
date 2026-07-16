@@ -1,15 +1,15 @@
-import "./Footer.css";
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className={styles.footer}>
       <div className="container">
-        <div className="footer-content">
-          <div className="footer-text">
+        <div className={styles["footer-content"]}>
+          <div className={styles["footer-text"]}>
             <p>© 2026 Zaid Gebremeskel. All rights reserved.</p>
             <p>Built with React + Vite</p>
           </div>
-          <p className="footer-thanks">Thank you for visiting!</p>
+          <p className={styles["footer-thanks"]}>Thank you for visiting!</p>
         </div>
       </div>
     </footer>

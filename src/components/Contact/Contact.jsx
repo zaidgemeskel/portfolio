@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useInView } from "../hooks/useInView";
+import { useInView } from "../../hooks/useInView";
 import {
   FaEnvelope,
   FaGithub,
   FaLinkedin,
   FaMapMarkerAlt,
 } from "react-icons/fa";
-import "./Contact.css";
+import styles from "./Contact.module.css";
 
 const Contact = () => {
   const [ref, isInView] = useInView(0.2);
@@ -35,15 +35,17 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact" ref={ref}>
+    <section id="contact" className={styles.contact} ref={ref}>
       <div className="container">
         <div className="section-title">
           <h2>Let's Connect</h2>
           <p>I'd love to hear from you. Feel free to reach out!</p>
         </div>
 
-        <div className={`contact-content ${isInView ? "fade-in-up" : ""}`}>
-          <div className="contact-info">
+        <div
+          className={`${styles["contact-content"]} ${isInView ? "fade-in-up" : ""}`}
+        >
+          <div className={styles["contact-info"]}>
             <h3>Get in Touch</h3>
             <p>
               Whether you have a project in mind, want to collaborate, or just
@@ -51,27 +53,29 @@ const Contact = () => {
               conversations.
             </p>
 
-            <div className="contact-details">
-              <div className="contact-detail">
-                <FaEnvelope className="contact-icon" />
+            <div className={styles["contact-details"]}>
+              <div className={styles["contact-detail"]}>
+                <FaEnvelope className={styles["contact-icon"]} />
                 <div>
                   <h4>Email</h4>
                   <p>
-                    <a href="mailto:Zaidgebremeskel502@gmail.com">Zaidgebremeskel502@gmail.com</a>
+                    <a href="mailto:Zaidgebremeskel502@gmail.com">
+                      Zaidgebremeskel502@gmail.com
+                    </a>
                   </p>
                 </div>
               </div>
 
-              <div className="contact-detail">
-                <FaMapMarkerAlt className="contact-icon" />
+              <div className={styles["contact-detail"]}>
+                <FaMapMarkerAlt className={styles["contact-icon"]} />
                 <div>
                   <h4>Location</h4>
                   <p>Tigray, Ethiopia</p>
                 </div>
               </div>
 
-              <div className="contact-detail">
-                <FaGithub className="contact-icon" />
+              <div className={styles["contact-detail"]}>
+                <FaGithub className={styles["contact-icon"]} />
                 <div>
                   <h4>GitHub</h4>
                   <p>
@@ -86,8 +90,8 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="contact-detail">
-                <FaLinkedin className="contact-icon" />
+              <div className={styles["contact-detail"]}>
+                <FaLinkedin className={styles["contact-icon"]} />
                 <div>
                   <h4>LinkedIn</h4>
                   <p>
@@ -103,12 +107,13 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="social-links">
+            <div className={styles["social-links"]}>
               <a
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link"
+                className={styles["social-link"]}
+                aria-label="GitHub"
               >
                 <FaGithub />
               </a>
@@ -116,20 +121,25 @@ const Contact = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link"
+                className={styles["social-link"]}
+                aria-label="LinkedIn"
               >
                 <FaLinkedin />
               </a>
-              <a href="mailto:zaid@example.com" className="social-link">
+              <a
+                href="mailto:zaid@example.com"
+                className={styles["social-link"]}
+                aria-label="Email"
+              >
                 <FaEnvelope />
               </a>
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <form className={styles["contact-form"]} onSubmit={handleSubmit}>
             <h3>Send Me a Message</h3>
 
-            <div className="form-group">
+            <div className={styles["form-group"]}>
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -142,7 +152,7 @@ const Contact = () => {
               />
             </div>
 
-            <div className="form-group">
+            <div className={styles["form-group"]}>
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -155,7 +165,7 @@ const Contact = () => {
               />
             </div>
 
-            <div className="form-group">
+            <div className={styles["form-group"]}>
               <label htmlFor="message">Message</label>
               <textarea
                 id="message"
@@ -173,7 +183,7 @@ const Contact = () => {
             </button>
 
             {submitted && (
-              <div className="success-message">
+              <div className={styles["success-message"]}>
                 Thank you! I'll get back to you soon.
               </div>
             )}

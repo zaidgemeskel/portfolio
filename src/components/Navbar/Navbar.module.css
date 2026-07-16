@@ -1,59 +1,8 @@
 /* =========================================================
-   THEME VARIABLES
-   These drive the whole navbar (and can drive the rest of
-   your site too, since --text-primary, --text-secondary,
-   --accent, --bg-secondary, --border-color were already
-   being referenced below).
+   MOBILE-FIRST: base rules below are the phone-size layout.
+   Each @media (min-width: …) block scales UP for larger
+   screens (tablet → laptop → desktop).
    ========================================================= */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --text-primary: #1a1a1a;
-  --text-secondary: #475569;
-  --bg-secondary: #f8fafc;
-  --border-color: rgba(15, 23, 42, 0.1);
-  --accent: #0ea5e9;
-  --nav-bg: rgba(255, 255, 255, 0.8);
-  --nav-bg-scrolled: rgba(255, 255, 255, 0.95);
-  --nav-border: rgba(15, 23, 42, 0.08);
-  --nav-shadow: rgba(0, 0, 0, 0.1);
-}
-
-body.light-theme {
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --text-primary: #1a1a1a;
-  --text-secondary: #475569;
-  --bg-secondary: #f8fafc;
-  --border-color: rgba(15, 23, 42, 0.1);
-  --accent: #0ea5e9;
-  --nav-bg: rgba(255, 255, 255, 0.8);
-  --nav-bg-scrolled: rgba(255, 255, 255, 0.95);
-  --nav-border: rgba(15, 23, 42, 0.08);
-  --nav-shadow: rgba(0, 0, 0, 0.1);
-}
-
-body.dark-theme {
-  --bg-color: #0f172a;
-  --text-color: #f1f5f9;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --bg-secondary: #0f172a;
-  --border-color: rgba(148, 163, 184, 0.15);
-  --accent: #38bdf8;
-  --nav-bg: rgba(15, 23, 42, 0.8);
-  --nav-bg-scrolled: rgba(15, 23, 42, 0.95);
-  --nav-border: rgba(148, 163, 184, 0.1);
-  --nav-shadow: rgba(0, 0, 0, 0.2);
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
 
 .navbar {
   position: fixed;
@@ -82,7 +31,7 @@ body {
 .navbar-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -97,6 +46,7 @@ body {
   gap: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -104,7 +54,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 800;
 }
 
@@ -112,17 +62,20 @@ body {
   letter-spacing: 2px;
 }
 
-/* Desktop Navigation */
+/* Desktop Navigation (hidden on phone/tablet, shown from 901px up) */
 .nav-menu {
-  display: flex;
-  gap: 2rem;
+  display: none;
+  gap: 1rem;
   list-style: none;
+  min-width: 0;
+  overflow: hidden;
+  flex-shrink: 1;
 }
 
 .nav-link {
   color: var(--text-secondary);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   transition: all 0.3s ease-in-out;
   position: relative;
   padding-bottom: 0.5rem;
@@ -131,6 +84,12 @@ body {
 .nav-link:hover,
 .nav-link.active {
   color: var(--accent);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
 .nav-link.active::after {
@@ -149,9 +108,10 @@ body {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  flex-shrink: 0;
 }
 
-/* Dark/Light mode toggle button */
+/* Dark/Light mode toggle button — always visible, at every screen size */
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -163,6 +123,7 @@ body {
   color: var(--accent);
   width: 2.25rem;
   height: 2.25rem;
+  flex-shrink: 0;
   padding: 0;
   border-radius: 50%;
   transition:
@@ -187,10 +148,16 @@ body {
   transform: rotate(180deg);
 }
 
-/* Mobile Menu Toggle */
+/* Mobile Menu Toggle (hamburger) — visible by default on phone/tablet */
 .hamburger {
-  display: none;
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
   font-size: 1.5rem;
   color: var(--text-primary);
@@ -201,7 +168,13 @@ body {
   color: var(--accent);
 }
 
-/* Mobile Navigation */
+.hamburger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Mobile Navigation dropdown */
 .mobile-menu {
   display: none;
   position: absolute;
@@ -211,8 +184,10 @@ body {
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
   flex-direction: column;
-  padding: 2rem;
-  gap: 1rem;
+  padding: 1.5rem;
+  gap: 0.75rem;
+  max-height: calc(100vh - 70px);
+  overflow-y: auto;
   animation: slideInFromRight 0.3s ease-in-out;
   transition:
     background-color 0.3s ease,
@@ -224,6 +199,9 @@ body {
 }
 
 .mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   color: var(--text-secondary);
   font-weight: 500;
   padding: 0.75rem 0;
@@ -232,43 +210,101 @@ body {
   padding-left: 1rem;
 }
 
+.mobile-nav-icon {
+  font-size: 1.1rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
   color: var(--accent);
   border-left-color: var(--accent);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .navbar-container {
-    padding: 0 1.5rem;
-  }
-
-  .mobile-menu {
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
+.mobile-nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 4px;
 }
 
-@media (max-width: 480px) {
+/* =========================================================
+   Responsive — mobile first, scaling up
+   ========================================================= */
+
+/* Small phone -> larger phone/small tablet */
+@media (min-width: 481px) {
   .navbar-container {
     padding: 0 1rem;
   }
 
-  .mobile-menu {
-    padding: 1.5rem;
-    gap: 0.75rem;
+  .logo-text {
+    font-size: 1.75rem;
   }
 
+  .mobile-menu {
+    padding: 2rem;
+    gap: 1rem;
+  }
+}
+@media (max-width: 480px) {
+
+  .navbar {
+    height: auto;
+  }
   .logo-text {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .mobile-menu {
+    padding: 0.3rem;
+    
+
+    
+  }
+}
+
+/* Tablet and up */
+@media (min-width: 769px) {
+  .navbar-container {
+    padding: 0 2rem;
+  }
+}
+
+/* Small laptop and up: switch from hamburger to full desktop nav */
+@media (min-width: 901px) {
+  .nav-menu {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+/* Laptop and up */
+@media (min-width: 1025px) {
+  .nav-menu {
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.92rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1201px) {
+  .nav-menu {
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
   }
 }

@@ -1,3 +1,5 @@
+/* Mobile-first: base rules are the phone-size layout. */
+
 .learning {
   background-color: var(--bg-secondary);
   position: relative;
@@ -22,8 +24,8 @@
 
 .learning-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   position: relative;
   z-index: 2;
 }
@@ -32,7 +34,7 @@
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  padding: 2rem;
+  padding: 1.25rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
   animation: fadeInUp 0.6s ease-out backwards;
@@ -49,7 +51,7 @@
 }
 
 .learning-icon {
-  font-size: 3rem;
+  font-size: 2.25rem;
   color: var(--accent);
   margin-bottom: 1rem;
   transition: all 0.3s ease-in-out;
@@ -60,31 +62,24 @@
 }
 
 .learning-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
 .learning-card p {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 0;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .learning-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* =========================================================
+   Responsive — mobile first, scaling up
+   ========================================================= */
 
-@media (max-width: 768px) {
-  .learning-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
+/* Larger phone */
+@media (min-width: 481px) {
   .learning-card {
     padding: 1.5rem;
   }
@@ -92,22 +87,35 @@
   .learning-icon {
     font-size: 2.5rem;
   }
-}
-
-@media (max-width: 480px) {
-  .learning-card {
-    padding: 1.25rem;
-  }
-
-  .learning-icon {
-    font-size: 2.25rem;
-  }
 
   .learning-card h3 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
 
   .learning-card p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet and up */
+@media (min-width: 769px) {
+  .learning-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .learning-card {
+    padding: 2rem;
+  }
+
+  .learning-icon {
+    font-size: 3rem;
+  }
+}
+
+/* Laptop and up: full fluid grid */
+@media (min-width: 1025px) {
+  .learning-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }

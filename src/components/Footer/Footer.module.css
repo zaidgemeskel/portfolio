@@ -1,0 +1,76 @@
+/* Mobile-first: base rules are the phone-size layout. */
+
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 0;
+  position: relative;
+  z-index: 100;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-text {
+  text-align: center;
+  flex: 1 0 100%;
+}
+
+.footer-text p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.footer-text p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-thanks {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-style: italic;
+  margin: 0;
+  flex: 1 0 100%;
+  text-align: center;
+}
+
+/* =========================================================
+   Responsive — mobile first, scaling up
+   ========================================================= */
+
+@media (min-width: 481px) {
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .footer-text p,
+  .footer-thanks {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .footer {
+    padding: 2rem 0;
+  }
+
+  .footer-content {
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .footer-text {
+    flex: 1;
+  }
+
+  .footer-thanks {
+    flex: 0 1 auto;
+    text-align: left;
+  }
+}

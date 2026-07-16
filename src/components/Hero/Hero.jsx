@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { FaArrowRight, FaEnvelope } from "react-icons/fa";
-import { useInView } from "../hooks/useInView";
-import "./Hero.css";
+import { useInView } from "../../hooks/useInView";
+import styles from "./Hero.module.css";
 
 const Hero = () => {
   const [ref, isInView] = useInView(0.3);
@@ -79,18 +79,22 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="hero" ref={ref}>
+    <section id="hero" className={styles.hero} ref={ref}>
       <div className="container">
-        <div className="hero-content">
-          <div className={`hero-text ${isInView ? "fade-in-up" : ""}`}>
-            <h1 className="hero-title">Zaid Gebremeskel</h1>
-            <p className="hero-subtitle">AI Full-Stack Web Developer</p>
-            <p className="hero-description">
+        <div className={styles["hero-content"]}>
+          <div
+            className={`${styles["hero-text"]} ${isInView ? "fade-in-up" : ""}`}
+          >
+            <h1 className={styles["hero-title"]}>Zaid Gebremeskel</h1>
+            <p className={styles["hero-subtitle"]}>
+              AI Full-Stack Web Developer
+            </p>
+            <p className={styles["hero-description"]}>
               I build modern, responsive, and scalable web applications using
               React, Node.js, Express, and MySQL. I enjoy solving real-world
               problems and continuously learning new technologies.
             </p>
-            <div className="hero-buttons">
+            <div className={styles["hero-buttons"]}>
               <button
                 className="btn btn-primary"
                 onClick={() => handleScroll("projects")}
@@ -106,23 +110,31 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className={`hero-visual ${isInView ? "slide-in-right" : ""}`}>
-            <canvas ref={canvasRef} className="hero-canvas"></canvas>
-            <div className="hero-code">
-              <div className="code-line">
-                <span className="code-keyword">const</span>{" "}
-                <span className="code-var">developer</span> ={" "}
-                <span className="code-string">'Full-Stack'</span>;
+          <div
+            className={`${styles["hero-visual"]} ${isInView ? "slide-in-right" : ""}`}
+          >
+            <canvas ref={canvasRef} className={styles["hero-canvas"]}></canvas>
+            <div className={styles["hero-code"]}>
+              <div className={styles["code-line"]}>
+                <span className={styles["code-keyword"]}>const</span>{" "}
+                <span className={styles["code-var"]}>developer</span> ={" "}
+                <span className={styles["code-string"]}>'Full-Stack'</span>;
               </div>
-              <div className="code-line">
-                <span className="code-keyword">const</span>{" "}
-                <span className="code-var">passion</span> ={" "}
-                <span className="code-string">'Building Products'</span>;
+              <div className={styles["code-line"]}>
+                <span className={styles["code-keyword"]}>const</span>{" "}
+                <span className={styles["code-var"]}>passion</span> ={" "}
+                <span className={styles["code-string"]}>
+                  'Building Products'
+                </span>
+                ;
               </div>
-              <div className="code-line">
-                <span className="code-keyword">const</span>{" "}
-                <span className="code-var">mission</span> ={" "}
-                <span className="code-string">'Continuous Learning'</span>;
+              <div className={styles["code-line"]}>
+                <span className={styles["code-keyword"]}>const</span>{" "}
+                <span className={styles["code-var"]}>mission</span> ={" "}
+                <span className={styles["code-string"]}>
+                  'Continuous Learning'
+                </span>
+                ;
               </div>
             </div>
           </div>

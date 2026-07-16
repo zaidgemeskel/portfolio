@@ -1,14 +1,16 @@
+/* Mobile-first: base rules are the phone-size layout. */
+
 .back-to-top {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 50px;
-  height: 50px;
+  bottom: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
   background-color: var(--accent);
   color: #000;
   border: none;
   border-radius: 50%;
-  font-size: 1.25rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   display: flex;
@@ -36,8 +38,16 @@
   transform: translateY(0);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+.back-to-top:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   Responsive — mobile first, scaling up
+   ========================================================= */
+
+@media (min-width: 481px) {
   .back-to-top {
     width: 45px;
     height: 45px;
@@ -47,12 +57,12 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 769px) {
   .back-to-top {
-    width: 40px;
-    height: 40px;
-    bottom: 1rem;
-    right: 1rem;
-    font-size: 1rem;
+    width: 50px;
+    height: 50px;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.25rem;
   }
 }

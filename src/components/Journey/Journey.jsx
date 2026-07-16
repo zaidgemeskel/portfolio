@@ -1,5 +1,5 @@
-import { useInView } from "../hooks/useInView";
-import { journeySteps } from "../data/journey";
+import { useInView } from "../../hooks/useInView";
+import { journeySteps } from "../../data/journey";
 import {
   FaLaptopCode,
   FaReact,
@@ -8,7 +8,7 @@ import {
   FaComments,
   FaGraduationCap,
 } from "react-icons/fa";
-import "./Journey.css";
+import styles from "./Journey.module.css";
 
 const iconMap = {
   FaLaptopCode: FaLaptopCode,
@@ -23,32 +23,34 @@ const Journey = () => {
   const [ref, isInView] = useInView(0.2);
 
   return (
-    <section id="journey" className="journey" ref={ref}>
+    <section id="journey" className={styles.journey} ref={ref}>
       <div className="container">
         <div className="section-title">
           <h2>My Journey</h2>
           <p>From fundamentals to full-stack development</p>
         </div>
 
-        <div className={`timeline ${isInView ? "fade-in-up" : ""}`}>
+        <div
+          className={`${styles.timeline} ${isInView ? "fade-in-up" : ""}`}
+        >
           {journeySteps.map((step, index) => {
             const IconComponent = iconMap[step.icon];
             return (
               <div
                 key={step.id}
-                className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`}
+                className={`${styles["timeline-item"]} ${index % 2 === 0 ? "left" : "right"}`}
               >
-                <div className="timeline-content">
-                  <div className="timeline-icon">
+                <div className={styles["timeline-content"]}>
+                  <div className={styles["timeline-icon"]}>
                     {IconComponent && <IconComponent />}
                   </div>
-                  <div className="timeline-card">
+                  <div className={styles["timeline-card"]}>
                     <h3>{step.title}</h3>
                     <p>{step.description}</p>
                   </div>
                 </div>
                 {index < journeySteps.length - 1 && (
-                  <div className="timeline-connector"></div>
+                  <div className={styles["timeline-connector"]}></div>
                 )}
               </div>
             );

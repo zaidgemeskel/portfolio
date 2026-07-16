@@ -1,16 +1,16 @@
 import "./styles/globals.css";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Journey from "./components/Journey";
-import Skills from "./components/Skills";
-import Achievements from "./components/Achievements";
-import Projects from "./components/Projects";
-import Learning from "./components/Learning";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import ScrollProgress from "./components/ScrollProgress";
-import BackToTop from "./components/BackToTop";
+import Navbar from "./components/Navbar/Navbar";
+import Hero from "./components/Hero/Hero";
+import About from "./components/About/About";
+import Journey from "./components/Journey/Journey";
+import Skills from "./components/Skills/Skills";
+import Achievements from "./components/Achievements/Achievements";
+import Projects from "./components/Projects/Projects";
+import Learning from "./components/Learning/Learning";
+import Contact from "./components/Contact/Contact";
+import Footer from "./components/Footer/Footer";
+import ScrollProgress from "./components/ScrollProgress/ScrollProgress";
+import BackToTop from "./components/BackToTop/BackToTop";
 
 function App() {
   return (

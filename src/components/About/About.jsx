@@ -1,22 +1,25 @@
-import { useInView } from "../hooks/useInView";
-import "./About.css";
-import zizu from "../assets/zizu.jpg";
+import { useInView } from "../../hooks/useInView";
+import { FaBullseye, FaUsers, FaBookOpen } from "react-icons/fa";
+import styles from "./About.module.css";
+import zizu from "../../assets/zizu.jpg";
 
 const About = () => {
   const [ref, isInView] = useInView(0.2);
 
   return (
-    <section id="about" className="about" ref={ref}>
+    <section id="about" className={styles.about} ref={ref}>
       <div className="container">
-        <div className={`about-content ${isInView ? "fade-in-up" : ""}`}>
-          <div className="about-image">
-            <div className="image-container">
+        <div
+          className={`${styles["about-content"]} ${isInView ? "fade-in-up" : ""}`}
+        >
+          <div className={styles["about-image"]}>
+            <div className={styles["image-container"]}>
               <img src={zizu} alt="Zaid Gebremeskel" />
-              <div className="image-border"></div>
+              <div className={styles["image-border"]}></div>
             </div>
           </div>
 
-          <div className="about-text">
+          <div className={styles["about-text"]}>
             <h2>About Me</h2>
             <p>
               I'm a passionate Full-Stack Web Developer who enjoys building
@@ -37,21 +40,27 @@ const About = () => {
               trends and technologies.
             </p>
 
-            <div className="features">
-              <div className="feature-card">
-                <div className="feature-icon">🎯</div>
+            <div className={styles.features}>
+              <div className={styles["feature-card"]}>
+                <div className={styles["feature-icon"]}>
+                  <FaBullseye />
+                </div>
                 <h4>Problem Solving</h4>
                 <p>
                   Breaking down complex problems into simple, elegant solutions
                 </p>
               </div>
-              <div className="feature-card">
-                <div className="feature-icon">👥</div>
+              <div className={styles["feature-card"]}>
+                <div className={styles["feature-icon"]}>
+                  <FaUsers />
+                </div>
                 <h4>Team Collaboration</h4>
                 <p>Working effectively with others to achieve common goals</p>
               </div>
-              <div className="feature-card">
-                <div className="feature-icon">📚</div>
+              <div className={styles["feature-card"]}>
+                <div className={styles["feature-icon"]}>
+                  <FaBookOpen />
+                </div>
                 <h4>Continuous Learning</h4>
                 <p>Always evolving and staying ahead of technology changes</p>
               </div>

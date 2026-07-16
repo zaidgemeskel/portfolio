@@ -1,3 +1,5 @@
+/* Mobile-first: base rules are the phone-size layout. */
+
 .achievements {
   background-color: var(--bg-secondary);
   position: relative;
@@ -22,8 +24,8 @@
 
 .achievements-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   margin-bottom: 3rem;
   position: relative;
   z-index: 2;
@@ -33,7 +35,7 @@
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
   animation: fadeInUp 0.6s ease-out backwards;
@@ -50,7 +52,7 @@
 }
 
 .achievement-number {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: 2rem;
   font-weight: 800;
   background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
   -webkit-background-clip: text;
@@ -86,8 +88,8 @@
 
 .achievements-secondary {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   position: relative;
   z-index: 2;
 }
@@ -96,7 +98,7 @@
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  padding: 1.5rem;
+  padding: 1.25rem;
   background-color: rgba(56, 189, 248, 0.05);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -114,13 +116,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   background-color: var(--accent);
   border-radius: 50%;
   color: #000;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1rem;
   flex-shrink: 0;
   transition: all 0.3s ease-in-out;
 }
@@ -131,7 +133,7 @@
 }
 
 .achievement-item h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
@@ -142,34 +144,22 @@
   margin-bottom: 0;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .achievements-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* =========================================================
+   Responsive — mobile first, scaling up
+   ========================================================= */
 
-  .achievements-secondary {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
+/* Larger phone */
+@media (min-width: 481px) {
   .achievements-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
   }
 
-  .achievement-card {
-    padding: 1.5rem 1rem;
+  .achievement-number {
+    font-size: clamp(2rem, 5vw, 2.5rem);
   }
 
-  .achievements-secondary {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .achievement-item {
-    padding: 1.25rem;
+  .achievement-item h4 {
+    font-size: 1.1rem;
   }
 
   .achievement-badge {
@@ -179,22 +169,40 @@
   }
 }
 
-@media (max-width: 480px) {
+/* Tablet and up */
+@media (min-width: 769px) {
   .achievements-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 
-  .achievement-number {
-    font-size: 2rem;
+  .achievement-card {
+    padding: 2rem 1.5rem;
   }
 
-  .achievement-item h4 {
-    font-size: 1rem;
+  .achievements-secondary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .achievement-item {
+    padding: 1.5rem;
   }
 
   .achievement-badge {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}
+
+/* Laptop and up: full fluid grid */
+@media (min-width: 1025px) {
+  .achievements-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .achievements-secondary {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
