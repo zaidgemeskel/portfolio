@@ -10,7 +10,7 @@ const Projects = () => {
     <section id="projects" className={styles.projects} ref={ref}>
       <div className="container">
         <div className="section-title">
-          <h2>Featured Projects</h2>
+          <h2>My Projects</h2>
           <p>Showcasing my best work and technical expertise</p>
         </div>
 
